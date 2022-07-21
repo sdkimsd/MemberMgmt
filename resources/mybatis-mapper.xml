@@ -10,5 +10,17 @@
 		<result property="city" column="city" javaType="String" jdbcType="VARCHAR"/>
 	</resultMap>
 	
+	<select id="selectUser" parameterType="String" resultMap="userResultMap">
+		SELECT * FROM users WHERE userid = #{userid}
+	</select>
+	
+	<insert id="insertUser" parameterType="userVo">
+		INSERT INTO users(userid, name, gender, city)
+		VALUES(#{userid}, #{name}, #{gender}, #{city})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM users WHERE userid = #{userid}
+	</delete>
 	
 </mapper>
